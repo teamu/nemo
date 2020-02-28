@@ -17,29 +17,29 @@ let getErrorType = errorName => {
 };
 
 module.exports = function(app) {
-  //   app.use(isAuth);
-
-  //   app.use(
-  //     "/api",
-  //     bodyParser.json(),
-  //     graphqlHttp({
-  //       schema: graphQlSchema,
-  //       rootValue: graphQlResolvers,
-  //       customFormatErrorFn: err => getErrorType(err.message),
-  //       graphiql: true
-  //     })
-  //   );
-
   app.use(isAuth);
 
   app.use(
     "/api",
     bodyParser.json(),
-    graphqlExpress({
+    graphqlHttp({
       schema: graphQlSchema,
       rootValue: graphQlResolvers,
       customFormatErrorFn: err => getErrorType(err.message),
       graphiql: true
     })
   );
+
+  // app.use(isAuth);
+
+  // app.use(
+  //   "/api",
+  //   bodyParser.json(),
+  //   graphqlExpress({
+  //     schema: graphQlSchema,
+  //     rootValue: graphQlResolvers,
+  //     customFormatErrorFn: err => getErrorType(err.message),
+  //     graphiql: true
+  //   })
+  // );
 };
