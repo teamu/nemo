@@ -29,17 +29,4 @@ module.exports = function(app) {
       graphiql: true
     })
   );
-
-  // app.use(isAuth);
-
-  // app.use(
-  //   "/api",
-  //   bodyParser.json(),
-  //   graphqlExpress({
-  //     schema: graphQlSchema,
-  //     rootValue: graphQlResolvers,
-  //     customFormatErrorFn: err => getErrorType(err.message),
-  //     graphiql: true
-  //   })
-  // );
 };
