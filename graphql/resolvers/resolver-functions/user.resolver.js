@@ -129,36 +129,36 @@ module.exports = {
       if (!req.isAuth) throw new Error(errorName.user_unauthorized);
       if (!req.isAdmin) throw new Error(errorName.user_unauthorized);
 
-      const users = await User.find();
+      const users = await User.find().populate("userRole");
 
       if (!users) throw new Error(errorName.intrnal_server_error);
 
-      let finalData = [];
-      await asyncForEach(users, async (item, index) => {
-        let role = [];
-        await asyncForEach(item.userRole, async (item, index) => {
-          let userRoleData = await Role.findOne({ _id: item });
-          role.push({ role: userRoleData.role });
-        });
-        let data = {
-          _id: item._id,
-          firstName: item.firstName,
-          lastName: item.lastName,
-          userName: item.userName,
-          password: item.password,
-          title: item.title,
-          companyName: item.companyName,
-          companyAddress: item.companyAddress,
-          telephone: item.telephone,
-          createdAt: item.createdAt,
-          updatedAt: item.updatedAt,
-          userRole: [...role]
-        };
-        finalData.push(data);
-      });
+      // let finalData = [];
+      // await asyncForEach(users, async (item, index) => {
+      //   let role = [];
+      //   await asyncForEach(item.userRole, async (item, index) => {
+      //     let userRoleData = await Role.findOne({ _id: item });
+      //     role.push({ role: userRoleData.role });
+      //   });
+      //   let data = {
+      //     _id: item._id,
+      //     firstName: item.firstName,
+      //     lastName: item.lastName,
+      //     userName: item.userName,
+      //     password: item.password,
+      //     title: item.title,
+      //     companyName: item.companyName,
+      //     companyAddress: item.companyAddress,
+      //     telephone: item.telephone,
+      //     createdAt: item.createdAt,
+      //     updatedAt: item.updatedAt,
+      //     userRole: [...role]
+      //   };
+      //   finalData.push(data);
+      // });
 
-      //return users;
-      return finalData;
+      return users;
+      //return finalData;
     } catch (err) {
       throw err;
     }

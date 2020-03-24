@@ -36,6 +36,9 @@ class Users extends Component {
       <Query query={GET_USER}>
         {({ data, loading, error }) => {
           if (error) return <p>error</p>;
+          if (data) {
+            console.log('=========================>>>>>>>', JSON.stringify(data));
+          }
 
           return (
             <Layout>

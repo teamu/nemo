@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const roleNewSchema = new Schema({
   roleCategory: {
-    enum: ["Entrant", "Juror", "Admin"],
-    required: true
+    type: String,
+    enum: ["entrant", "juror", "admin"]
   },
   role: {
     type: String,
@@ -103,4 +103,4 @@ const roleNewSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model("roleNewSchema", roleSchema);
+module.exports = mongoose.model("roleNewSchema", roleNewSchema);

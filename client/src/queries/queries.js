@@ -126,3 +126,72 @@ export const USER_DETAIL_ROLE = gql`
     }
   }
 `;
+
+export const CREATE_NEW_ROLE = gql`
+  mutation(
+    $roleCategory: String!
+    $role: String!
+    $createEntry: Boolean!
+    $viewEntry: Boolean!
+    $editEntry: Boolean!
+    $deleteEntry: Boolean!
+    $addMedia: Boolean!
+    $replaceMedia: Boolean!
+    $deleteMedia: Boolean!
+    $checkoutEntry: Boolean!
+    $accessOpenJudgingSystem: Boolean!
+    $voteOpenJudgingSystem: Boolean!
+    $commentOpenJudgingSystem: Boolean!
+    $accessVerifiedJudgingSystem: Boolean!
+    $voteVerifiedJudgingSystem: Boolean!
+    $commentVerifiedJudgingSystem: Boolean!
+    $accessAssignedJudgingSystem: Boolean!
+    $voteAssignedJudgingSystem: Boolean!
+    $commentAssignedJudgingSystem: Boolean!
+  ) {
+    createNewRole(
+      newRoleInput: {
+        roleCategory: $roleCategory
+        role: $role
+        access: {
+          entrant: {
+            createEntry: $createEntry
+            viewEntry: $viewEntry
+            editEntry: $editEntry
+            deleteEntry: $deleteEntry
+            addMedia: $addMedia
+            replaceMedia: $replaceMedia
+            deleteMedia: $deleteMedia
+            checkoutEntry: $checkoutEntry
+          }
+          juror: {
+            accessOpenJudgingSystem: $accessOpenJudgingSystem
+            voteOpenJudgingSystem: $voteOpenJudgingSystem
+            commentOpenJudgingSystem: $commentOpenJudgingSystem
+            accessVerifiedJudgingSystem: $accessVerifiedJudgingSystem
+            voteVerifiedJudgingSystem: $voteVerifiedJudgingSystem
+            commentVerifiedJudgingSystem: $commentVerifiedJudgingSystem
+            accessAssignedJudgingSystem: $accessAssignedJudgingSystem
+            voteAssignedJudgingSystem: $voteAssignedJudgingSystem
+            commentAssignedJudgingSystem: $commentAssignedJudgingSystem
+          }
+        }
+      }
+    ) {
+      role
+      roleCategory
+      access {
+        entrant {
+          createEntry
+          viewEntry
+          editEntry
+          deleteEntry
+          addMedia
+          replaceMedia
+          deleteMedia
+          checkoutEntry
+        }
+      }
+    }
+  }
+`;

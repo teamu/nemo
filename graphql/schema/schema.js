@@ -1,6 +1,12 @@
 const { buildSchema } = require("graphql");
+const newRole = require("./newRole");
 
 module.exports = buildSchema(`
+
+${newRole.NewRoleType}
+${newRole.AccessType}
+${newRole.EntrantAccessType}
+${newRole.JurorAccessType}
 
 type Role {
     role: String!
@@ -88,6 +94,11 @@ input RoleInput {
     role: String!
 }
 
+${newRole.NewRoleInput}
+${newRole.AccesInput}
+${newRole.EntrantAccessInput}
+${newRole.JurorAccessInput}
+
 type RootQuery {
     items: [Item!]
     users: [User!]
@@ -103,6 +114,7 @@ type RootMutation {
     passwordReset(refreshToken: String!, userId: ID!, newPassword: String!): PasswordResetData!
     forgotPassword(userName: String!): NotificationData!
     createRole(roleInput: RoleInput!): RoleUser
+    ${newRole.createNewRole}
 }
 
 schema {

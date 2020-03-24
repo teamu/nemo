@@ -111,6 +111,7 @@ class NormalLoginForm extends Component {
                       Log in
                     </Button>
                     Or <NavLink to="/signup">Register Now!</NavLink>
+                    <NavLink to="/add-roles-category">Roles Management</NavLink>
                   </Form.Item>
                 </Form>
                 <div className="clear"></div>

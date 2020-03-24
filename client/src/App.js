@@ -14,6 +14,7 @@ import ManageRoles from './pages/ManageRoles';
 import AddRole from './pages/AddRole';
 import Mediums from './pages/awardspages/Mediums';
 import Taxonomy from './pages/awardspages/Taxonomy';
+import AddRolesCategory from './pages/addRolesCategoryClass';
 
 import AuthContext from './context/auth-context';
 import './App.css';
@@ -96,6 +97,7 @@ class App extends Component {
             <Route path="/addrole" component={AddRole} />
             <Route path="/reset-password/:refreshTokenForPassword" component={Reset} />
             <Route path="/login" component={Login} />
+            <Route path="/add-roles-category" component={AddRolesCategory} />
           </Switch>
         </AuthContext.Provider>
       </BrowserRouter>
